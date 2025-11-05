@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿# 🇹🇿 Tanzania Local Government Portal
 
 > **Empowering Digital Governance for All Citizens**  
@@ -64,3 +65,7 @@ src/
 - **ChatGPT (AI Co-Developer)** — Full code + optimization
 
 ---
+=======
+# Tanzania-Local-Government-Services-
+Tanzania Local Government Services
+>>>>>>> 5f392961fa3fa7aa8ac4d391588a91ac5d8bb032
