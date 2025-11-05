@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Permit / Kibali Document</title>
+  <script type="module">
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+    const supabase = createClient("https://YOUR_PROJECT.supabase.co","YOUR_ANON_PUBLIC_KEY");
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    async function loadData(){
+      const { data } = await supabase.from("permits").select("*").eq("id", id).single();
+      if(!data) return;
+      document.getElementById("permit_holder").innerText = data.applicant_name;
+      document.getElementById("permit_type").innerText = data.permit_type;
+      document.getElementById("valid_from").innerText = new Date(data.valid_from).toLocaleDateString();
+      document.getElementById("valid_to").innerText = new Date(data.valid_to).toLocaleDateString();
+      document.getElementById("permit_no").innerText = "KIB-" + data.id.slice(0,6).toUpperCase();
+      document.getElementById("issued_by").innerText = data.issued_by || "Local Authority Officer";
+    }
+    loadData();
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="p-10 bg-white text-gray-900">
+  <div class="text-center border-b pb-3 mb-4">
+    <h1 class="text-2xl font-bold uppercase">KIBALI / PERMIT DOCUMENT</h1>
+  </div>
+  <div class="space-y-2">
+    <p><strong>Permit No:</strong> <span id="permit_no"></span></p>
+    <p><strong>Holder Name:</strong> <span id="permit_holder"></span></p>
+    <p><strong>Permit Type:</strong> <span id="permit_type"></span></p>
+    <p><strong>Valid From:</strong> <span id="valid_from"></span></p>
+    <p><strong>Valid To:</strong> <span id="valid_to"></span></p>
+  </div>
+  <div class="mt-8 text-center">
+    <p class="font-semibold">Issued By: <span id="issued_by"></span></p>
+  </div>
+</body>
+</html>
