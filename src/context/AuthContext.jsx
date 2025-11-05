@@ -60,3 +60,4 @@ export function AuthProvider({ children }) {
   const value = { user, userRole, userMeta, loading, signUp, signIn, signOut };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
+

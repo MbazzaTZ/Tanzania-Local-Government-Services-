@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Citizen Certificate of Residence</title>
+  <script type="module">
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+    const supabase = createClient("https://YOUR_PROJECT.supabase.co", "YOUR_ANON_PUBLIC_KEY");
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    async function loadData() {
+      const { data } = await supabase.from("citizen_verifications").select("*").eq("id", id).single();
+      if (!data) return;
+      document.getElementById("citizen_name").innerText = data.full_name;
+      document.getElementById("nida").innerText = data.nida_number;
+      document.getElementById("ward").innerText = data.ward;
+      document.getElementById("village").innerText = data.village;
+      document.getElementById("issued_date").innerText = new Date().toLocaleDateString();
+      document.getElementById("certificate_no").innerText = `LG-${data.ward}-${new Date().getFullYear()}-${data.id.slice(0, 4)}`;
+    }
+    loadData();
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="p-10 bg-white text-gray-900">
+  <div class="text-center border-b pb-4 mb-4">
+    <h1 class="text-2xl font-bold uppercase">Serikali ya Mtaa</h1>
+    <h2 class="text-lg font-semibold">Cheti cha Mkazi</h2>
+  </div>
+  <div class="space-y-3">
+    <p><strong>Jina:</strong> <span id="citizen_name"></span></p>
+    <p><strong>NIDA:</strong> <span id="nida"></span></p>
+    <p><strong>Ward:</strong> <span id="ward"></span></p>
+    <p><strong>Village:</strong> <span id="village"></span></p>
+    <p><strong>Certificate No:</strong> <span id="certificate_no"></span></p>
+    <p><strong>Date Issued:</strong> <span id="issued_date"></span></p>
+  </div>
+  <div class="mt-8 text-center">
+    <p class="font-semibold">Approved by Local Government Officer</p>
+  </div>
+</body>
+</html>

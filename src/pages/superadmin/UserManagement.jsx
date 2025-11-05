@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import { supabase } from "../../supabase-config";
 import toast from "react-hot-toast";
 
@@ -33,7 +33,7 @@ export default function UserManagement() {
 
   return (
     <div className="p-6 space-y-6">
-      <h2 className="text-2xl font-bold">Super Admin — User Management</h2>
+      <h2 className="text-2xl font-bold">Super Admin â€” User Management</h2>
 
       <form onSubmit={createStaff} className="bg-white shadow p-4 rounded-md space-y-3">
         <input
@@ -98,3 +98,4 @@ export default function UserManagement() {
     </div>
   );
 }
+

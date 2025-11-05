@@ -1,4 +1,4 @@
-import { useAuth } from "../../context/AuthContext";
+﻿import { useAuth } from "../../context/AuthContext";
 import { supabase } from "../../supabase-config";
 
 const { userRole, userMeta } = useAuth();
@@ -18,3 +18,4 @@ async function fetchApplications() {
   if (error) console.error(error.message);
   return data;
 }
+

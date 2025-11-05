@@ -1,6 +1,6 @@
 ﻿import { useState, useEffect } from 'react';
 import { db } from '../firebase-config';
-import { collection, query, where, onSnapshot } from 'firebase/firestore';
+import { supabase } from '../../supabase-config';
 import { useAuth } from '../context/AuthContext';
 
 export default function useNotifications() {
@@ -21,3 +21,4 @@ export default function useNotifications() {
 
   return { notifications, unreadCount };
 }
+

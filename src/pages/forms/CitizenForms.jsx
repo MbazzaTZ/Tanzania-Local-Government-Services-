@@ -1,6 +1,6 @@
-import React from "react";
+﻿import React from "react";
 import { useNavigate } from "react-router-dom";
-import { FileText, ClipboardCheck, Wallet, IdCard, FileSignature } from "lucide-react";
+import { FileText, ClipboardCheck, Wallet, BadgeCheck, FileSignature } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 
 export default function CitizenForms() {
@@ -30,7 +30,7 @@ export default function CitizenForms() {
       name: "Identity Request",
       desc: "Request official verification of your residence or identity.",
       path: "/forms/identity-request",
-      icon: <IdCard size={24} className="text-green-600" />,
+      icon: <BadgeCheck size={24} className="text-green-600" />,
     },
     {
       name: "Permit Request",
@@ -54,7 +54,7 @@ export default function CitizenForms() {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">📋 Citizen Forms Dashboard</h1>
+      <h1 className="text-2xl font-bold mb-4">ðŸ“‹ Citizen Forms Dashboard</h1>
       <p className="text-gray-600 mb-6">
         Below are the available forms you can fill and submit digitally to your local government office.
       </p>
@@ -82,3 +82,5 @@ export default function CitizenForms() {
     </div>
   );
 }
+
+
